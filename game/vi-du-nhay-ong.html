@@ -2,12 +2,22 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>Flappy Bird</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+  }
   body {
     display: flex; align-items: center; justify-content: center;
-    min-height: 100vh;
     background: linear-gradient(180deg, #1a1a2e, #16213e);
     font-family: 'Segoe UI', Arial, sans-serif;
     overflow: hidden;
@@ -17,8 +27,22 @@
     box-shadow: 0 0 40px rgba(0,0,0,0.6);
     border-radius: 8px;
     overflow: hidden;
+    touch-action: none;
+    max-width: 100vw;
+    max-height: 100vh;
+    max-height: 100dvh;
+    display: flex;
   }
-  canvas { display: block; background: #70c5ce; }
+  canvas {
+    display: block;
+    background: #70c5ce;
+    touch-action: none;
+    max-width: 100vw;
+    max-height: 100vh;
+    max-height: 100dvh;
+    width: auto;
+    height: auto;
+  }
   #overlay {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -108,11 +132,21 @@ function flap() {
   }
 }
 
+const gameContainer = document.getElementById('gameContainer');
+
 document.addEventListener('keydown', e => {
   if (e.code === 'Space') { e.preventDefault(); flap(); }
 });
-canvas.addEventListener('mousedown', flap);
-canvas.addEventListener('touchstart', e => { e.preventDefault(); flap(); }, {passive:false});
+
+// Gắn lên cả container (không chỉ canvas) vì overlay nằm đè lên trên canvas
+// và sẽ chặn mất sự kiện click/touch nếu chỉ lắng nghe trên canvas.
+gameContainer.addEventListener('mousedown', e => { e.preventDefault(); flap(); });
+gameContainer.addEventListener('touchstart', e => { e.preventDefault(); flap(); }, {passive:false});
+
+// Chặn pinch-zoom bằng gesture (Safari) và double-tap zoom
+document.addEventListener('gesturestart', e => e.preventDefault());
+document.addEventListener('dblclick', e => e.preventDefault());
+document.addEventListener('touchmove', e => { if (e.scale && e.scale !== 1) e.preventDefault(); }, {passive:false});
 
 function spawnPipe() {
   const minTop = 60;
