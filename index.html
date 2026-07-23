@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HDZ Game community</title>
+<meta name="description" content="Game từ cộng đồng có đam mê">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="logo-row">
+      <div class="logo-cart"></div>
+      <h1 class="site-title pixel">HDZ <span>GAME</span> COMMUNITY</h1>
+    </div>
+    <p class="tagline">Game từ cộng đồng có đam mê</p>
+
+    <div class="search-wrap">
+      <div class="search-slot">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input id="search" type="text" placeholder="Tìm tên game..." autocomplete="off">
+      </div>
+      <p class="search-hint">Gõ đúng <b>tên game ẩn</b> để mở khoá — game ẩn sẽ không xuất hiện trong danh sách thông thường.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="section-row">
+      <h2>Thư viện game — mới nhất trước</h2>
+      <span class="count-pill" id="count-pill">0 game</span>
+    </div>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <footer>
+    HDZ Game community · thêm game mới bằng cách chỉnh <code>data/games.json</code>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
