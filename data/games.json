@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Nhảy Ống Neon",
+    "file": "game/vi-du-nhay-ong.html",
+    "date": "2026-07-20",
+    "hidden": false
+  },
+  {
+    "name": "Đường Đua Bí Mật",
+    "file": "hide/duong-dua-bi-mat.html",
+    "date": "2026-07-15",
+    "hidden": true
+  }
+]
