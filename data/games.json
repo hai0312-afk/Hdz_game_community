@@ -46,5 +46,11 @@
     "file": "game/element.html",
     "date": "2026-07-29",
     "hidden": false
+  },
+  {
+    "name": "Kiếm khách - @nnd.dung",
+    "file": "game/kiem_khach.html",
+    "date": "2026-08-06",
+    "hidden": false
   }
 ]
